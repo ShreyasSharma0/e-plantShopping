@@ -296,31 +296,13 @@ const handlePlantsClick = (e) => {
                                         <h3>{plant.name}</h3>
                                         <p>{plant.description}</p>
                                         <p><strong>{plant.cost}</strong></p>
+                                        <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                                     </div>
                                 ))}
                             </div>
                         </div>
                     ))}
-            {plantsArray.map((category, index) => (
-                <div key={index}>
-                    <h1><div>{category.category}</div></h1>
-                    <div className="product-list">
-                        {category.plants.map((plant, plantIndex) => (
-                            <div className="product-card" key={plantIndex}>
-                                <img src={plant.image} alt={plant.name} className="product-image" />
-                                <div className="product-title">{plant.name}</div>
-                                <div>{plant.description}</div>
-                                <div>{plant.cost}</div>
-                                
-                                    <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to Cart</button>
-                                    
-                                
-                            </div>
-                            ))}
-                    </div>
-                </div>
-
-            ))}
+        
         </div>
  ) :  (
     <CartItem onContinueShopping={handleContinueShopping}/>
