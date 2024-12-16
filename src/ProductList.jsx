@@ -305,7 +305,7 @@ const handlePlantsClick = (e) => {
                 <div key={index}>
                     <h1><div>{category.category}</div></h1>
                     <div className="product-list">
-                        {category.plants.map(plant, plantIndex) => (
+                        {category.plants.map((plant, plantIndex) => (
                             <div className="product-card" key={plantIndex}>
                                 <img src={plant.image} alt={plant.name} className="product-image" />
                                 <div className="product-title">{plant.name}</div>
@@ -313,7 +313,7 @@ const handlePlantsClick = (e) => {
                                 <div>{plant.cost}</div>
                                 <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
                             </div>
-                        )}
+                        ))}
                     </div>
                 </div>
 
