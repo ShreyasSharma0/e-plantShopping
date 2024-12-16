@@ -4,7 +4,7 @@ import CartItem from './CartItem';
 import { addItem } from './CartSlice';
 import { useDispatch } from 'react-redux';
 
-function ProductList(props) {
+function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
 
@@ -303,7 +303,7 @@ const handlePlantsClick = (e) => {
                 <div key={index}>
                     <h1><div>{category.category}</div></h1>
                     <div className="product-list">
-                        {category.plants.map(plant, plantIndex) => (
+                        {category.plants.map((plant, plantIndex) => (
                             <div className="product-card" key={plantIndex}>
                                 <img src={plant.image} alt={plant.name} className="product-image" />
                                 <div className="product-title">{plant.name}</div>
@@ -316,7 +316,7 @@ const handlePlantsClick = (e) => {
                                     )}
                                 
                             </div>
-                            )}
+                            ))}
                     </div>
                 </div>
 
