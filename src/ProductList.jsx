@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react';
 import './ProductList.css'
 import CartItem from './CartItem';
+
 function ProductList() {
     const [showCart, setShowCart] = useState(false); 
     const [showPlants, setShowPlants] = useState(false); // State to control the visibility of the About Us page
@@ -232,7 +233,20 @@ function ProductList() {
     fontSize: '30px',
     textDecoration: 'none',
    }
-   const handleCartClick = (e) => {
+
+const [addedToCart, setAddedToCart] =useState({});
+
+const handleAddToCart = (plant) => {
+    dispatch(addItem(plant)); // Dispatch action to add plant to the cart
+    setAddedToCart((prevState) => ({
+        ...prevState,
+        [plant.name]: true, // Mark the product as added
+    }));
+};
+
+
+
+const handleCartClick = (e) => {
     e.preventDefault();
     setShowCart(true); // Set showCart to true when cart icon is clicked
 };
@@ -293,7 +307,12 @@ const handlePlantsClick = (e) => {
                                 <div className="product-title">{plant.name}</div>
                                 <div>{plant.description}</div>
                                 <div>{plant.cost}</div>
-                                <button  className="product-button" onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                {addedToCart[plant.name] ? (
+                                    <button disabled>Added to Cart</button>
+                                    ) : (
+                                    <button className='product-button' onClick={() => handleAddToCart(plant)}>Add to Cart</button>
+                                    )}
+                                
                             </div>
                         )}
                     </div>
@@ -306,6 +325,8 @@ const handlePlantsClick = (e) => {
 )}
     </div>
     );
+
+
 }
 
 export default ProductList;
